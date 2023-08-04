@@ -1,0 +1,145 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color: rgb(236, 234, 234);
+    padding-bottom: 20px;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+}
+.header-2{
+    background-color: white;
+    justify-content: space-between;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.sports{
+    display: flex;
+}
+
+.sky{
+    height: 100px;
+    width: 300px;
+    background-color: rgb(24, 24, 218);
+    color:rgb(242, 238, 238);
+    text-align: right;
+    padding-right: 10px;
+}
+
+.sports{
+    height: 100px;
+    width: 1390px;
+    background-color: rgb(223, 19, 19);
+    color: white;
+    padding-left: 10px;
+}
+
+header .float-right{
+    padding-left: 700px;
+    display: flex;
+}
+
+.header-button{
+    align-self: center;
+    width: 360px;
+}
+
+button{
+    height: 40px;
+    width: 180px;
+    background-color: rgb(223, 19, 19);
+    color:white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5%;
+}
+
+.tabs{
+display: flex;
+list-style: none;
+font-size: 18px;
+padding-left: 170px;
+width: 550px;
+justify-content: space-between;
+padding-top: 9px;
+}
+
+.opening-headline{
+    display: flex;
+    padding-top: 50px;
+    padding-left: 100px;
+    
+}
+
+video{
+    width: 830px;
+}
+
+.opening-text{
+    background-color: white;
+    padding-top: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.latest-news{
+    padding-left: 100px;
+    padding-top: 20px;
+}
+
+.news-flex{
+    display: flex;
+    padding-left: 100px;
+    padding-top: 10px;
+    justify-content: space-between;
+    padding-right: 100px;
+}
+
+.news-flex-2{
+    padding-top: 50px;
+    display: flex;
+    padding-left: 100px;
+    padding-right: 100px;
+    justify-content: space-between;
+    padding-bottom: 40px;
+}
+    
+.news-text{
+    background-color: white;
+    height: 120px;
+}
+
+hr .solid{
+    border-top: 2px;
+    opacity: 0.9;
+}
+
+.divider{
+    padding-bottom: 10px;
+}
+
+.tabs-2{
+    display: flex;
+    list-style: none;
+    padding-left: 100px;
+    justify-content: space-between;
+    width: 650px;
+}
+
+.copyright{
+    display: flex;
+}
+
+
+
+
+
+
+
+

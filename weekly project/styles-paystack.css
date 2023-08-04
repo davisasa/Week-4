@@ -1,0 +1,78 @@
+body{
+    padding-top: 20px;
+    padding-left: 500px;
+    padding-right: 500px;
+}
+
+#codetrain{
+    font-size: 23px;
+}
+
+#pay{
+    font-size: 18px;
+}
+
+#feint{
+    opacity: 50%;
+}
+
+.block{
+    background-color: rgb(247, 247, 247);
+    width: 100%;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    border-top-left-radius: 2%;
+    border-bottom-left-radius: 2%;
+    border-top-right-radius: 2%;
+    border-bottom-right-radius: 2%;
+}
+
+.name{
+    display: flex;
+}
+
+label{
+    font-size: 20px;
+}
+
+.text-box{
+    height: 30px;
+    width: 230px;
+}
+
+.email-box{
+    height: 30px;
+    width: 495px;
+}
+
+#currency{
+    height: 30px;
+    width: 150px;
+}
+
+#amount-box{
+    height: 30px;
+    width: 340px;
+}
+
+#id-box{
+    height: 30px;
+    width: 495px;
+}
+
+#last-name{
+    margin-left: 30px;
+}
+
+button{
+    background-color: rgb(67, 220, 67);
+    height: 40px;
+    width: 150px;
+    color: white;
+}
+
+#payment-methods{
+    width: 600px;
+}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script type="text/javascript">
+  (function () {
+    try {
+        const CART_URL_REGEX = [
+          /cart/,
+          /checkout/,
+          /bag/,
+          /basket/
+        ];
+        const { fetch: originalFetch } = window;
+
+        window.fetch = async (...args) => {
+            let [resource, config] = args;
+            const response = await originalFetch(resource, config);
+            const clonedResponse = response.clone();
+
+            if (typeof resource === "string") {
+                urlNoQueryStrings = (resource).split('?')[0];
+            } else {
+                urlNoQueryStrings = (resource?.url || '').split('?')[0];
+            }
+
+            const contentType =  clonedResponse.headers.get('Content-Type');
+            if (CART_URL_REGEX.some((m) => urlNoQueryStrings && m.test(urlNoQueryStrings)) && contentType.includes('json')) {
+              setTimeout(async () => {
+                const responseBody = await clonedResponse.text()
+
+                if (responseBody) window.postMessage({ type: "CART_EVENT_DETECTED", cart: responseBody }, "*");
+              }, 1000);
+            }
+
+            return response;
+        };
+
+        let XHR = XMLHttpRequest.prototype;
+        let send = XHR.send;
+        let open = XHR.open;
+        XHR.open = function (method, url) {
+            this.url = url; // the request url
+            return open.apply(this, arguments);
+        }
+        XHR.send = function () {
+            this.addEventListener('load', function () {
+                const urlNoQueryStrings = this.url.split('?')[0];
+                const contentType = this.getResponseHeader("Content-Type");
+                 if (CART_URL_REGEX.some((m) => urlNoQueryStrings && m.test(urlNoQueryStrings)) && contentType.includes('json')) {
+                     if (this.response) window.postMessage({ type: "CART_EVENT_DETECTED", cart: this.response }, "*");
+                 }
+            });
+            return send.apply(this, arguments);
+        };
+    } catch (error) {
+        console.log({ error })
+    }
+})();
+  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Document_files/styles-proect.css">
+</head>
+<body>
+    <div>
+        <div class="nav">
+        <div class="header">
+            <header class="header-1">
+                <div class="sky">
+                    <h1>SKY</h1>
+                </div>
+                <div class="sports">
+                    <h1>Sports</h1>
+
+                    <div class="float-right">
+                    <h2>Get sky sports</h2>
+                    <br><br>
+                    <h2>Login</h2>
+                    </div>
+                </div>
+            </header>
+        </div>
+        </div>
+    
+        <div>
+            <header class="header-2">
+                <div>
+                    <ul class="tabs">
+                        <li id="list">Home</li>
+                        <li id="list">Sports</li>
+                        <li id="list">Scores</li>
+                        <li id="list">Videos</li>
+                        <li id="list">TV</li>
+                        <li id="list">Sky Bet</li>
+                        <li id="list">Shop</li>
+                    </ul>
+                </div>
+                <div class="logos">
+                    <img src="" alt="">
+                    <img src="" alt="">
+                    <img src="" alt="">
+                    <img src="" alt="">
+                </div>
+
+            <div class="header-button">
+                <button>
+                    Watch Sky Sports
+                </button>
+            </div> 
+            </header>
+        </div>
+
+        <div class="opening-headline">
+            <div class="opening-image">
+                <video src="Document_files/2023%2520U.S.%2520Open%2520Highlights-%2520Rory%2520McIlroy,%2520Round%252.mp4" controls="controls">
+
+                </video>
+            </div>
+            <div class="opening-text">
+                <div>
+                    <h4 class="opening-h4">Golf</h4>
+                </div>
+                <div>
+                    <h2 class="opening-h2">US Open: Fowler<br> Schauffele lead after<br> record-breaking<br> rounds LIVE!</h2>
+                </div>
+                <br><br>
+                <h3 class="opening-h3">When is the US Open live on Sky? &gt;</h3>
+                <h3 class="opening-h3">US Open 2023: Who is in the field? &gt;</h3>
+            </div>
+            
+        </div>
+            <div class="latest">
+                <h1 class="latest-news">Latest News</h1>
+            </div>
+            <div class="news-flex">
+                <div class="news-1">
+                        <img src="Document_files/belling.jpg" alt="">
+                        <div class="news-text">
+                            <p>FOOTBALL</p>
+                            <p>Bellingham passes first test <br> on Real unveiling as new No 5</p>
+                        </div>
+                </div>
+                <div class="news-1">
+                    <img src="Document_files/belling.jpg" alt="">
+                    <div class="news-text">
+                        <p>FOOTBALL</p>
+                        <p>Bellingham passes first test <br> on Real unveiling as new No 5</p>
+                    </div>
+                </div>
+                <div class="news-1">
+                    <img src="Document_files/belling.jpg" alt="">
+                    <div class="news-text">
+                        <p>FOOTBALL</p>
+                        <p>Bellingham passes first<br> test on Real unveiling as new No 5</p>
+                    </div>
+            </div>
+        </div>
+
+        <!-- second latest-->
+        <div class="news-flex-2">
+            <div class="news-1">
+                    <img src="Document_files/belling.jpg" alt="">
+                    <div class="news-text">
+                        <p>FOOTBALL</p>
+                        <p>Bellingham passes first test <br> on Real unveiling as new No 5</p>
+                    </div>
+            </div>
+            <div class="news-1">
+                <img src="Document_files/belling.jpg" alt="">
+                <div class="news-text">
+                    <p>FOOTBALL</p>
+                    <p>Bellingham passes first test <br> on Real unveiling as new No 5</p>
+                </div>
+            </div>
+            <div class="news-1">
+                <img src="Document_files/belling.jpg" alt="">
+                <div class="news-text">
+                    <p>FOOTBALL</p>
+                    <p>Bellingham passes first<br> test on Real unveiling as new No 5</p>
+                </div>
+        </div>
+    </div>
+
+    <div class="divider">
+        <hr class="solid">
+    </div>
+    <div class="footer">
+        <div class="footer-tab">
+            <ul class="tabs-2">
+                <li>Terms &amp; Conditions</li>
+                <li>Cookie Notice</li>
+                <li>Privacy Options</li>
+                <li>Accessibility Information</li>
+                <li>Contact Us</li>
+            </ul>
+        </div>
+        <div class="copyright">
+            <div>
+            <img src="" alt="">
+            </div>
+            <div>
+            ©<p>2023 Sky UK</p>
+            </div>
+        </div>
+    </div>
+
+</div></body></html>
